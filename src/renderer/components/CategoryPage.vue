@@ -2,15 +2,21 @@
   <div id="wrapper">
     <main>
       <div class="left-side">
+        <button class="alt" @click="open(WORKSHEET_ADDRESS)">Open sheet</button>
         <span class="title">Kategorie</span> <small v-if="loading">Loading...</small>
         <p v-if="error">{{ error }}</p>
         <ul>
-          <li v-for="(category, index) in categories" :key="index">{{ category.name }}</li>
+          <li 
+            v-for="(category, index) in categories" 
+            :key="index"
+            v-on:click="selectedCategory = category">
+              {{ category.name }}
+            </li>
         </ul>
       </div>
 
       <div class="right-side">
-        <add-spend></add-spend>
+        <add-spend :category="selectedCategory"></add-spend>
       </div>
     </main>
   </div>
@@ -19,6 +25,7 @@
 <script>
 import AddSpend from './CategoryPage/AddSpend'
 import { mapState } from 'vuex'
+import config from '../../../config'
 
 export default {
   components: { AddSpend },
@@ -27,6 +34,8 @@ export default {
       categories: [],
       error: null,
       loading: false,
+      selectedCategory: null,
+      WORKSHEET_ADDRESS: config.WORKSHEET_ADDRESS,
     }
   },
   name: 'category-page',
