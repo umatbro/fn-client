@@ -1,0 +1,19 @@
+{
+  "name": "fn-client",
+  "version": "0.1.0",
+  "description": "gRPC client utilizing Electron",
+  "main": "index.js",
+  "repository": "git@github.com:umatbro/fn-client.git",
+  "author": "umatbro <umatbroo@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.4",
+    "dotenv": "^8.2.0",
+    "grpc": "^1.24.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "update-proto": "node update_proto.js"
+  }
+}
