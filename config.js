@@ -1,12 +1,12 @@
-const result = require('dotenv').config();
+const result = require('dotenv').config()
 
 if (result.error) {
-    throw result.error
+  throw result.error
 }
 
-config = result.parsed;
+const config = result.parsed
+config.SERVER_HOST = config.SERVER_HOST || 'localhost:50051'
 
-
-module.exports = {
-    ...config,
+export default {
+  ...config,
 }
